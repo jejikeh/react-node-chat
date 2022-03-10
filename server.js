@@ -11,11 +11,15 @@ app.get('/rooms', (req, res) => {
     res.json(rooms);
 });
 
+app.post('/rooms', (req, res) => {
+    console.log('dd');
+});
+
 io.on('connection', (socket) => {
     console.log('socket connected', socket.id);
 });
 
-server.listen(1337, (error) => {
+server.listen(9999, (error) => {
     if (error) {
         throw error;
     } else {

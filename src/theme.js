@@ -45,8 +45,8 @@ theme.components.MuiButton = {
                 flexDirection: 'column',
                 alignItems: 'flex-start',
                 padding: '12px',
-                paddingLeft: '16px',
-                paddingRight: '16px',
+                paddingLeft: '32px',
+                paddingRight: '32px',
 
                 borderRadius: '4px',
                 boxSizing: 'border-box',
