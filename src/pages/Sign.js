@@ -1,10 +1,13 @@
 import React, { useReducer, useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Typography, TextField, Button } from '@mui/material';
+import axios from 'axios';
 import Alert from '@mui/material/Alert';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
+
+import reducer from '../reducer';
 
 import socket from '../socket';
 import './Sign.css';
@@ -24,7 +27,19 @@ wrapperHeaderText.typography.h1 = {
     marginBottom: '16px',
 };
 
-function Sign() {
+const Sign = () => {
+    const [state, dispatch] = React.useReducer(reducer, {
+        isAuth: false,
+    });
+
+    const onLogin = () => {
+        dispatch({
+            type: 'IS_AUTH',
+            payload: true,
+        });
+        console.log(state);
+    };
+
     const [roomId, setRoomId] = useState('');
     const [userName, setUserName] = useState('');
 
@@ -36,7 +51,12 @@ function Sign() {
             // eslint-disable-next-line no-alert
             setOpen(true);
         } else {
-            console.log(roomId, userName);
+            axios
+                .post('/rooms', {
+                    roomId,
+                    userName,
+                })
+                .then(onLogin);
         }
     };
     return (
@@ -102,6 +122,6 @@ function Sign() {
             </Box>
         </div>
     );
-}
+};
 
 export default Sign;
