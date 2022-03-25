@@ -63,7 +63,7 @@ const Sign = () => {
         <div className="wrapper">
             <div className="header">
                 <ThemeProvider theme={wrapperHeaderText}>
-                    <Typography variant="h1">ЧАТ,</Typography>
+                    <Typography variant="h1">ЧАТ</Typography>
                 </ThemeProvider>
                 <Typography variant="body1">
                     Введите номер комнаты и свой никнейм.
